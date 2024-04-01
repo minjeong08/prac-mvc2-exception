@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.*;
 public class ApiExceptionV2Controller {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
+//    @ExceptionHandler(IllegalArgumentException.class)
     public ErrorResult illegalExHandler(IllegalArgumentException e) {
         log.error("[exceptionHandle] ex", e);
         return new ErrorResult("BAD", e.getMessage());
     }
 
-    @ExceptionHandler
+//    @ExceptionHandler
     public ResponseEntity<ErrorResult> userExHandler(UserException e) {
         log.error("[exceptionHandle] ex", e);
         ErrorResult errorResult = new ErrorResult("USER-EX", e.getMessage());
@@ -28,7 +28,7 @@ public class ApiExceptionV2Controller {
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler
+//    @ExceptionHandler
     public ErrorResult exHandler(Exception e) {
         log.error("[exceptionHandle] ex", e);
         return new ErrorResult("EX", "내부 오류");
